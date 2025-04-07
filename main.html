@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenPASS - Générateur de Mot de Passe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            word-wrap: break-word;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #34495e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>GenPASS - Générateur de Mot de Passe</h1>
+
+        <!-- Mot de passe maître -->
+        <label for="master-password">Mot de passe maître</label><br>
+        <input type="password" id="master-password" placeholder="Entrez votre mot de passe maître" required><br>
+
+        <!-- Nom du site / clé -->
+        <label for="site-name">Nom du site / clé</label><br>
+        <input type="text" id="site-name" placeholder="Entrez le nom du site ou clé" required><br>
+
+        <!-- Inclure des symboles -->
+        <label for="include-symbols">Inclure des symboles</label>
+        <input type="checkbox" id="include-symbols" checked><br>
+
+        <!-- Bouton générer -->
+        <button onclick="generatePassword()">Générer</button>
+
+        <!-- Affichage du mot de passe généré -->
+        <div id="result"></div>
+
+        <!-- Bouton copier -->
+        <button onclick="copyPassword()">Copier</button>
+    </div>
+
+    <script>
+        function generatePassword() {
+            const masterPassword = document.getElementById('master-password').value;
+            const siteName = document.getElementById('site-name').value;
+            const includeSymbols = document.getElementById('include-symbols').checked;
+
+            if (!masterPassword || !siteName) {
+                document.getElementById('result').textContent = 'Veuillez entrer un mot de passe maître et un nom de site.';
+                return;
+            }
+
+            // Génération du mot de passe
+            const password = generateRandomPassword(masterPassword, siteName, includeSymbols);
+            document.getElementById('result').textContent = password;
+        }
+
+        function generateRandomPassword(masterPassword, siteName, includeSymbols) {
+            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            const symbols = "!@#$%^&*()-_=+[]{}<>?";
+            const combinedCharset = includeSymbols ? charset + symbols : charset;
+            const hash = hmacSha256(masterPassword, siteName);
+            let password = '';
+
+            for (let i = 0; i < hash.length; i++) {
+                password += combinedCharset[hash.charCodeAt(i) % combinedCharset.length];
+                if (password.length >= 16) break;
+            }
+
+            return password;
+        }
+
+        function hmacSha256(key, message) {
+            const encoder = new TextEncoder();
+            const keyBytes = encoder.encode(key);
+            const messageBytes = encoder.encode(message);
+            return crypto.subtle.importKey('raw', keyBytes, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify'])
+                .then(key => {
+                    return crypto.subtle.sign('HMAC', key, messageBytes)
+                        .then(signature => {
+                            return Array.from(new Uint8Array(signature)).map(b => String.fromCharCode(b)).join('');
+                        });
+                });
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('result').textContent;
+            if (password) {
+                navigator.clipboard.writeText(password).then(() => {
+                    alert('Mot de passe copié!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
