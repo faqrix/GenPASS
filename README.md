@@ -17,6 +17,14 @@ Les mots de passe sont générés à partir de deux éléments :
 
 Le mot de passe généré est **toujours le même** pour une combinaison de mot de passe maître et de mot clé (site). Cela signifie que tu n'as plus besoin d'enregistrer de mots de passe pour chaque site. Il te suffit de retenir ton mot de passe maître et d'entrer le mot clé (nom du site) pour obtenir le mot de passe correspondant. Les mots de passe **ne sont pas enregistrés** nulle part, assurant ainsi la confidentialité.
 
+## Version Web
+
+GenPASS est aussi disponible directement en ligne, sans installation, via la version Web :
+
+👉 [Accéder à GenPASS en ligne](https://genpass-production.up.railway.app)
+
+Cette version te permet de générer des mots de passe directement depuis ton navigateur.
+
 ## Installation
 
 ### 1. Version Mobile (APK pour Android)
