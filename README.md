@@ -15,7 +15,7 @@ Les mots de passe sont générés à partir de deux éléments :
 1. **Mot de passe maître** : Un mot de passe sécurisé que tu choisis et que tu retiens.
 2. **Mot clé** : Par exemple, le nom d'un site (ex : "example.com").
 
-Le mot de passe généré est **toujours le même** pour une combinaison de mot de passe maître et de mot clé (site). Cela signifie que tu n'as plus besoin d'enregistrer de mots de passe pour chaque site. Il te suffit de retenir ton mot de passe maître et d'entrer le mot clé (nom du site) pour obtenir le mot de passe correspondant. Les mots de passe **ne sont pas enregistrés** nulle part, assurant ainsi la confidentialité.
+Le mot de passe généré est **toujours le même** pour une combinaison de mot de passe maître et de mot clé (site). Cela signifie que tu n'as plus besoin d'enregistrer de mots de passe pour chaque site. Il te suffit de retenir ton mot de passe maître et d'entrer le mot clé (nom du site) pour obtenir le mot de passe correspondant. Les mots de passe **ne sont enregistrés** nulle part, assurant ainsi la confidentialité.
 
 ## Version Web
 
