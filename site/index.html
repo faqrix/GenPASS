@@ -74,7 +74,7 @@
     </div>
 
     <script>
-        function generatePassword() {
+        async function generatePassword() {
             const masterPassword = document.getElementById('master-password').value;
             const siteName = document.getElementById('site-name').value;
             const includeSymbols = document.getElementById('include-symbols').checked;
@@ -84,18 +84,18 @@
                 return;
             }
 
-            // Génération du mot de passe
-            const password = generateRandomPassword(masterPassword, siteName, includeSymbols);
+            // ⚠️ on attend le résultat async
+            const password = await generateRandomPassword(masterPassword, siteName, includeSymbols);
             document.getElementById('result').textContent = password;
         }
 
-        function generateRandomPassword(masterPassword, siteName, includeSymbols) {
+        async function generateRandomPassword(masterPassword, siteName, includeSymbols) {
             const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             const symbols = "!@#$%^&*()-_=+[]{}<>?";
             const combinedCharset = includeSymbols ? charset + symbols : charset;
-            const hash = hmacSha256(masterPassword, siteName);
-            let password = '';
+            const hash = await hmacSha256(masterPassword, siteName); // ← ici aussi on attend
 
+            let password = '';
             for (let i = 0; i < hash.length; i++) {
                 password += combinedCharset[hash.charCodeAt(i) % combinedCharset.length];
                 if (password.length >= 16) break;
@@ -103,6 +103,7 @@
 
             return password;
         }
+
 
         function hmacSha256(key, message) {
             const encoder = new TextEncoder();

@@ -38,8 +38,7 @@ def generer_mot_de_passe(mdp_maitre, mot_cle, avec_symboles=True, longueur=16):
 class PasswordGenerator(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(orientation='vertical', padding=30, spacing=20, **kwargs)
-        self.size_hint = (None, None)
-        self.width = 600
+        self.size_hint = (1, 1)  # ou laisse par défaut pour que size_hint_y fonctionne
         self.pos_hint = {"center_x": 0.5}
 
         with self.canvas.before:
@@ -128,10 +127,11 @@ class PasswordGenerator(BoxLayout):
 
 class GenPASSApp(App):
     def build(self):
-        Window.size = (700, 700)
         layout = BoxLayout(orientation='vertical', padding=50)
-        layout.add_widget(PasswordGenerator())
+        layout.add_widget(PasswordGenerator(size_hint_y=0.5))  # occupe moitié écran
+        layout.add_widget(Widget(size_hint_y=0.5))  # vide en dessous pour clavier
         return layout
+
 
 if __name__ == '__main__':
     GenPASSApp().run()
