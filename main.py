@@ -12,6 +12,7 @@ from kivy.uix.button import Button
 from kivy.core.clipboard import Clipboard
 from kivy.core.window import Window
 from kivy.graphics import Color, RoundedRectangle
+from kivy.uix.widget import Widget
 
 Window.clearcolor = (44/255, 62/255, 80/255, 1)  # #2c3e50
 Window.set_title("GenPASS")
@@ -47,7 +48,7 @@ class PasswordGenerator(BoxLayout):
             self.bind(size=self.update_bg, pos=self.update_bg)
 
         self.add_widget(Label(text="GenPASS - Générateur de Mot de Passe",
-                              font_size=28, color=(1, 1, 1, 1), size_hint_y=None, height=40))
+                              font_size=32, color=(1, 1, 1, 1), size_hint_y=None, height=40))
 
         # Mot de passe maître
         self.add_widget(Label(text="Mot de passe maître", color=(1, 1, 1, 1)))
@@ -63,10 +64,10 @@ class PasswordGenerator(BoxLayout):
 
         # Checkbox + label
         symbol_line = BoxLayout(orientation='horizontal', size_hint_y=None, height=30)
-        self.checkbox_symbols = CheckBox(active=True)
-        symbol_line.add_widget(self.checkbox_symbols)
         symbol_line.add_widget(Label(text="Inclure des symboles", color=(1, 1, 1, 1)))
         self.add_widget(symbol_line)
+        self.checkbox_symbols = CheckBox(active=True)
+        symbol_line.add_widget(self.checkbox_symbols)
 
         # Résultat
         self.result_label = Label(text="", font_size=22, bold=True, halign='center',
@@ -83,13 +84,13 @@ class PasswordGenerator(BoxLayout):
 
         # Footer
         self.footer = Button(
-            text="Développé avec ❤️ par faqrix",
+            text="Développé par faqrix",
             size_hint_y=None,
-            height=40,
+            height=60,
             background_normal='',
             background_color=(0, 0, 0, 0),
             color=(1, 1, 1, 0.6),
-            font_size=14
+            font_size=20
         )
         self.footer.bind(on_press=lambda *_: webbrowser.open("https://github.com/faqrix/GenPASS"))
         self.add_widget(self.footer)
@@ -97,9 +98,9 @@ class PasswordGenerator(BoxLayout):
     def make_button(self, text, callback):
         btn = Button(
             text=text,
-            font_size=18,
+            font_size=30,
             size_hint_y=None,
-            height=50,
+            height=70,
             background_normal='',
             background_color=(52/255, 152/255, 219/255, 1),  # #3498db
             color=(1, 1, 1, 1)
