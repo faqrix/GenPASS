@@ -21,7 +21,7 @@ Le mot de passe généré est **toujours le même** pour une combinaison de mot 
 
 GenPASS est aussi disponible directement en ligne, sans installation, via la version Web :
 
-👉 [Accéder à GenPASS en ligne](https://github.com/faqrix/GenPASS/raw/refs/heads/main/GenPASS.apk?download=)
+👉 [Accéder à GenPASS en ligne](https://genpass-production.up.railway.app)
 
 Cette version te permet de générer des mots de passe directement depuis ton navigateur.
 
@@ -32,7 +32,7 @@ L'application mobile est disponible sous forme de fichier APK que tu peux instal
 
 #### Étapes d'installation :
 1. Télécharge l'APK depuis le lien suivant :
-   - Télécharger [GenPASS APK](lien_vers_ton_apk_github)
+   - Télécharger [GenPASS APK](https://github.com/faqrix/GenPASS/raw/refs/heads/main/GenPASS.apk?download=)
 
 2. Autorise l'installation d'applications à partir de sources inconnues dans les paramètres de ton appareil Android :
    - Va dans **Paramètres > Sécurité** (ou **Paramètres > Applications** selon ta version Android).
