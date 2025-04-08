@@ -21,7 +21,7 @@ Le mot de passe généré est **toujours le même** pour une combinaison de mot 
 
 GenPASS est aussi disponible directement en ligne, sans installation, via la version Web :
 
-👉 [Accéder à GenPASS en ligne](https://genpass-production.up.railway.app)
+👉 [Accéder à GenPASS en ligne](https://github.com/faqrix/GenPASS/raw/refs/heads/main/GenPASS.apk?download=)
 
 Cette version te permet de générer des mots de passe directement depuis ton navigateur.
 
