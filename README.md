@@ -32,7 +32,7 @@ L'application mobile est disponible sous forme de fichier APK que tu peux instal
 
 #### Étapes d'installation :
 1. Télécharge l'APK depuis le lien suivant :
-   - Télécharger [GenPASS APK](https://github.com/faqrix/GenPASS/raw/refs/heads/main/GenPASS.apk?download=)
+   - Télécharger [GenPASS APK](https://www.dropbox.com/scl/fi/06oojxtj6vgg9scxp2pt8/GenPASS.apk?rlkey=phcljqxe4h6e2omm6sbc20l35&st=0yzt4aof&dl=0)
 
 2. Autorise l'installation d'applications à partir de sources inconnues dans les paramètres de ton appareil Android :
    - Va dans **Paramètres > Sécurité** (ou **Paramètres > Applications** selon ta version Android).
@@ -46,13 +46,13 @@ L'application mobile est disponible sous forme de fichier APK que tu peux instal
 La version PC de l'application est disponible dans le dossier `dist` du projet. Cette version peut être exécutée sur des systèmes d'exploitation comme Windows, Linux ou macOS.
 
 #### Étapes pour la version PC :
-1. Navigue vers le dossier `dist` de ce dépôt.
-2. Télécharge le fichier correspondant à ton système d'exploitation (par exemple, `GenPASS.exe` pour Windows ou `GenPASS.app` pour macOS).
-3. Installe l'application en suivant les instructions spécifiques à ton système d'exploitation :
+1. Télécharge le fichier [GenPASS EXE](https://www.dropbox.com/scl/fi/6nnc0rqtzr76o1pavrwyj/GenPASS.exe?rlkey=7x9flanzmmrun48kanbagd93w&st=rtgywhs0&dl=0)
+
+2. Installe l'application en suivant les instructions spécifiques à ton système d'exploitation :
    - Pour **Windows**, exécute le fichier `.exe`.
    - Pour **Linux**, exécute le fichier binaire ou utilise les commandes appropriées pour installer l'application.
 
-4. Une fois l'installation terminée, tu peux lancer **GenPASS** depuis ton menu d'applications ou en double-cliquant sur le fichier exécutable.
+3. Une fois l'installation terminée, tu peux lancer **GenPASS** depuis ton menu d'applications ou en double-cliquant sur le fichier exécutable.
 
 ## Utilisation
 
