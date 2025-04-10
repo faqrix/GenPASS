@@ -12,7 +12,6 @@ from kivy.uix.button import Button
 from kivy.core.clipboard import Clipboard
 from kivy.core.window import Window
 from kivy.graphics import Color, RoundedRectangle
-from kivy.uix.widget import Widget
 
 Window.clearcolor = (44/255, 62/255, 80/255, 1)  # #2c3e50
 Window.set_title("GenPASS")
@@ -49,11 +48,17 @@ class PasswordGenerator(BoxLayout):
             self.bg = RoundedRectangle(radius=[20], size=self.size, pos=self.pos)
             self.bind(size=self.update_bg, pos=self.update_bg)
 
+        # Titre avec retour à la ligne automatique
         self.title = Label(
             text="GenPASS - Générateur de Mot de Passe",
             color=(1, 1, 1, 1),
-            size_hint_y=None
+            size_hint_y=None,  # Permet à la taille de s'ajuster dynamiquement
+            height=40,  # Taille initiale du titre
+            halign='center',  # Alignement horizontal
+            valign='middle',  # Alignement vertical
+            text_size=(self.width - 40, 200)  # Largeur dynamique du texte avec retour à la ligne
         )
+
         self.add_widget(self.title)
 
         self.label_maitre = Label(text="Mot de passe maître", color=(1, 1, 1, 1))
@@ -143,8 +148,10 @@ class PasswordGenerator(BoxLayout):
         rf = self.responsive_font
         rh = self.responsive_height
 
+        # Ajuster la taille du titre pour qu'il soit plus petit sur les petites fenêtres
         self.title.font_size = rf(0.05)
-        self.title.height = rh(0.08)
+        self.title.height = rh(0.1)
+        self.title.text_size = (self.width - 40, None)  # Largeur dynamique du texte
 
         self.label_maitre.font_size = rf(0.03)
         self.label_maitre.height = rh(0.05)
