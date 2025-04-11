@@ -106,14 +106,14 @@ class PasswordGenerator(BoxLayout):
         self.add_widget(self.footer)
 
         # Responsive
-        Window.bind(on_resize=self.on_window_resize)
-        self.on_window_resize(Window, Window.width, Window.height)
+        self.bind(size=self.on_layout_resize)
 
     def responsive_font(self, percent):
-        return Window.height * percent
+        return self.height * percent
 
     def responsive_height(self, percent):
-        return Window.height * percent
+        return self.height * percent
+
 
     def make_button(self, text, callback):
         btn = Button(
@@ -144,14 +144,13 @@ class PasswordGenerator(BoxLayout):
     def on_copier(self, instance):
         Clipboard.copy(self.result_label.text)
 
-    def on_window_resize(self, window, width, height):
+    def on_layout_resize(self, *args):
         rf = self.responsive_font
         rh = self.responsive_height
 
-        # Ajuster la taille du titre pour qu'il soit plus petit sur les petites fenêtres
         self.title.font_size = rf(0.05)
         self.title.height = rh(0.1)
-        self.title.text_size = (self.width - 40, None)  # Largeur dynamique du texte
+        self.title.text_size = (self.width - 40, None)
 
         self.label_maitre.font_size = rf(0.03)
         self.label_maitre.height = rh(0.05)
@@ -164,7 +163,7 @@ class PasswordGenerator(BoxLayout):
         self.input_site.height = rh(0.06)
 
         self.symbol_label.font_size = rf(0.03)
-        self.checkbox_symbols.size = (30, 30)
+        self.checkbox_symbols.size = (rh(0.04), rh(0.04))
 
         self.result_label.font_size = rf(0.04)
         self.result_label.height = rh(0.09)
@@ -177,6 +176,7 @@ class PasswordGenerator(BoxLayout):
 
         self.footer.font_size = rf(0.025)
         self.footer.height = rh(0.07)
+
 
 
 class GenPASSApp(App):
